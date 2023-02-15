@@ -14,8 +14,7 @@
         <nav class="nav"></nav>
     </header>
 
-    <section class="main-gallery">
-
+    <section class="main-gallery gallery-layout">
     </section>
 
 
@@ -26,7 +25,11 @@
             </canvas>
         </div>
         <div class="editor">
-            <input type="text" oninput="onSetLineTxt(this.value)">
+            <input class="txt-input" type="text" oninput="onSetLineTxt(this.value)">
+            <input type="color" oninput="onChangeColor(this.value)">
+            <button onclick="onScaleFont(5)">Increase</button>
+            <button onclick="onScaleFont(-5)">Decrease</button>
+            <button onclick="onSwitchLine()">Switch Line</button>
         </div>
     </section>
 
