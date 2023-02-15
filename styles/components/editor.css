@@ -1,3 +1,28 @@
 .editor {
     background-color: #820d0d;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 50px 50px;
+    gap: 8px;
+    grid-template-areas:
+        "line line line line line"
+        "inc inc decr decr switch"
+    ;
+}
+
+.editor .txt-input {
+    grid-area: line;
+}
+
+.editor .btn-increase {
+    grid-area: inc;
+}
+
+.editor .btn-decrease {
+    grid-area: decr;
+}
+
+.editor .btn-switch {
+    grid-area: switch;
 }

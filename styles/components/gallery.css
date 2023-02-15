@@ -1,0 +1,14 @@
+.gallery-nav {
+    padding:0 0 30px;
+    margin-inline-start: 45px;
+}
+
+.main-gallery {
+    background-color: var(--clr-1);
+    padding: 20px;
+}
+
+.main-gallery .img-container>*:hover {
+    border: 5px solid var(--clr1);
+    cursor: pointer;
+}

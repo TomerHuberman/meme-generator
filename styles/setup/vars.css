@@ -1,7 +1,9 @@
 :root {
 
   /* palette */
-  --clrbase: #58c93a;
+  --clr1: #923c02;
+  --clrbase: #f37e00;
+  --clr-1: #ecc83a;
  
 
   /* layout */

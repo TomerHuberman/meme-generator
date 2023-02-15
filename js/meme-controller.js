@@ -7,8 +7,13 @@ function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
     resizeCanvas()
+    changeMainTo('gallery')
     renderMeme()
     renderGallery()
+    window.addEventListener('resize', () => {
+        resizeCanvas()
+        renderMeme()
+    })
 }
 
 function renderMeme() {
@@ -55,7 +60,7 @@ function drawText(lines) {
         gCtx.lineWidth = 1
         gCtx.strokeStyle = 'black'
         gCtx.fillStyle = line.color
-        gCtx.font = `${line.size}px Arial`
+        gCtx.font = `${line.size}px impact`
         gCtx.textAlign = 'center'
         gCtx.textBaseline = 'middle'
 

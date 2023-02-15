@@ -19,6 +19,11 @@
   src: url(/fonts/fontAwesome/fa-brands-400.ttf);
 }
 
+@font-face {
+  font-family: impact;
+  src: url(/fonts/impact.ttf);
+}
+
 .fa::before {
   font-family: fa;
 }

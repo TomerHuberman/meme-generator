@@ -10,26 +10,38 @@
 </head>
 
 <body onload="onInit()">
-    <header class="main-header">
-        <nav class="nav"></nav>
+    <header class="main-header flex space-between align-center">
+        <div class="logo"> LOGO </div>
+        <nav class="main-nav">
+            <ul class="main-menu clean-list flex">
+                <li><a class="active" href="#" onclick="changeMainTo('gallery')">Gallery</a></li>
+                <li><a href="#" onclick="">Memes</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section class="main-gallery gallery-layout">
+    <section class="main main-gallery gallery-layout">
+        <nav class="gallery-nav">
+            <label for="gallery-search">Search by key wards: </label>
+            <input id="gallery-search" type="text" placeholder="search">
+        </nav>
+        <div class="img-container"></div>
     </section>
 
 
-    <section class="main-editor editor-layout">
+    <section class="main main-editor editor-layout">
         <div class="canvas-container">
             <canvas width="400px" height="400px" class="editor-img">
 
             </canvas>
         </div>
+
         <div class="editor">
             <input class="txt-input" type="text" oninput="onSetLineTxt(this.value)">
             <input type="color" oninput="onChangeColor(this.value)">
-            <button onclick="onScaleFont(5)">Increase</button>
-            <button onclick="onScaleFont(-5)">Decrease</button>
-            <button onclick="onSwitchLine()">Switch Line</button>
+            <button class="btn-increase" onclick="onScaleFont(5)">Increase</button>
+            <button class="btn-decrease"  onclick="onScaleFont(-5)">Decrease</button>
+            <button class="btn-switch" onclick="onSwitchLine()">Switch Line</button>
         </div>
     </section>
 
