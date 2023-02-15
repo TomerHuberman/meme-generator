@@ -9,23 +9,34 @@
     <title>Meme Generator</title>
 </head>
 
-<body>
-    <header>
-        <nav></nav>
+<body onload="onInit()">
+    <header class="main-header">
+        <nav class="nav"></nav>
     </header>
 
-    <section class="main-gallery"></section>
-    
-    
-    <section class="main-editor"></section>
+    <section class="main-gallery">
+
+    </section>
+
+
+    <section class="main-editor editor-layout">
+        <div class="canvas-container">
+            <canvas width="400px" height="400px" class="editor-img">
+
+            </canvas>
+        </div>
+        <div class="editor">
+            <input type="text" oninput="onSetLineTxt(this.value)">
+        </div>
+    </section>
 
 
 
-    <script src="js/gallery-cntroller.js"></script>
-    <script src="js/memegen-controller.js"></script>
     <script src="js/services/gallery-service.js"></script>
-    <script src="js/services/memegen-service.js"></script>
+    <script src="js/services/meme-service.js"></script>
     <script src="js/services/storage.service.js"></script>
+    <script src="js/gallery-cntroller.js"></script>
+    <script src="js/meme-controller.js"></script>
 </body>
 
 </html>

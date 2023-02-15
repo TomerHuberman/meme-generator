@@ -1,27 +1,7 @@
-
 /* Main Layout */
 
-.main-layout {
+.editor-layout {
   display: grid;
-  grid-template-columns: 20px 1fr 20px;
-}
-.main-layout > .full {
-  grid-column: 1 / -1;
-}
-.main-layout > *:not(.full) {
-  grid-column: 2;
-}
-
-/* card-layout */
-
-
-.card-layout {
-  display: grid;
-
-  grid-template-areas: 
-  "i"
-  "h"
-  "p"
-  "b"
-  ;
+  grid-template-columns: 500px 500px;
+  justify-content: center;
 }

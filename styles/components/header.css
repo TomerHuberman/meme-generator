@@ -1,0 +1,10 @@
+.main-header {
+    position: relative;
+    background-color: orange;
+    height: 100px;
+    /* z-index: 1; */
+    /* box-shadow: inset 0px -6px 0 var(--clr6); */
+  }
+  .main-header .nav {
+    height: 100%;
+  }
