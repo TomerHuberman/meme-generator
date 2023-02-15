@@ -42,6 +42,10 @@
   content: "\2b";
 }
 
+.fa-s.palette::before {
+  content: "\f53f";
+}
+
 /* 
 .fa.facebook::before {
   content: "\f39e";

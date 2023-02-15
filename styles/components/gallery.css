@@ -11,4 +11,5 @@
 .main-gallery .img-container>*:hover {
     border: 5px solid var(--clr1);
     cursor: pointer;
+    box-shadow: 11px 10px 17px 3px var(--clr3);
 }

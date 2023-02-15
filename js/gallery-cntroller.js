@@ -9,6 +9,11 @@ function renderGallery() {
     elGallery.innerHTML = strHtml.join('')
 }
 
+function setFilterParam(filterBy) {
+    filterParam(filterBy)
+    renderGallery()
+}
+
 function onSetImg(id) {
     changeMainTo('editor')
     setImg(id)

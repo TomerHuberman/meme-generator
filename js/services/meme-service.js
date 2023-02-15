@@ -3,24 +3,24 @@
 let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 let gImgs = [
-    { id: 1, url: 'imgs-square/1.jpg', keywords: ['funny', 'cat'] },
-    { id: 2, url: 'imgs-square/2.jpg', keywords: ['funny', 'cat'] },
-    { id: 3, url: 'imgs-square/3.jpg', keywords: ['funny', 'cat'] },
-    { id: 4, url: 'imgs-square/4.jpg', keywords: ['funny', 'cat'] },
-    { id: 5, url: 'imgs-square/5.jpg', keywords: ['funny', 'cat'] },
-    { id: 6, url: 'imgs-square/6.jpg', keywords: ['funny', 'cat'] },
-    { id: 7, url: 'imgs-square/7.jpg', keywords: ['funny', 'cat'] },
-    { id: 8, url: 'imgs-square/8.jpg', keywords: ['funny', 'cat'] },
-    { id: 9, url: 'imgs-square/9.jpg', keywords: ['funny', 'cat'] },
-    { id: 10, url: 'imgs-square/10.jpg', keywords: ['funny', 'cat'] },
+    { id: 1, url: 'imgs-square/1.jpg', keywords: ['funny', 'politicoes'] },
+    { id: 2, url: 'imgs-square/2.jpg', keywords: [ 'animal'] },
+    { id: 3, url: 'imgs-square/3.jpg', keywords: ['kids', 'animal'] },
+    { id: 4, url: 'imgs-square/4.jpg', keywords: ['animal'] },
+    { id: 5, url: 'imgs-square/5.jpg', keywords: ['funny', 'kids'] },
+    { id: 6, url: 'imgs-square/6.jpg', keywords: ['funny', 'actors'] },
+    { id: 7, url: 'imgs-square/7.jpg', keywords: ['funny', 'kids'] },
+    { id: 8, url: 'imgs-square/8.jpg', keywords: ['funny', 'actors'] },
+    { id: 9, url: 'imgs-square/9.jpg', keywords: ['funny', 'kids'] },
+    { id: 10, url: 'imgs-square/10.jpg', keywords: ['funny', 'politicoes'] },
     { id: 11, url: 'imgs-square/11.jpg', keywords: ['funny', 'cat'] },
-    { id: 12, url: 'imgs-square/12.jpg', keywords: ['funny', 'cat'] },
-    { id: 13, url: 'imgs-square/13.jpg', keywords: ['funny', 'cat'] },
-    { id: 14, url: 'imgs-square/14.jpg', keywords: ['funny', 'cat'] },
-    { id: 15, url: 'imgs-square/15.jpg', keywords: ['funny', 'cat'] },
-    { id: 16, url: 'imgs-square/16.jpg', keywords: ['funny', 'cat'] },
-    { id: 17, url: 'imgs-square/17.jpg', keywords: ['funny', 'cat'] },
-    { id: 18, url: 'imgs-square/18.jpg', keywords: ['funny', 'cat'] },
+    { id: 12, url: 'imgs-square/12.jpg', keywords: ['funny', 'actors'] },
+    { id: 13, url: 'imgs-square/13.jpg', keywords: ['funny', 'actors'] },
+    { id: 14, url: 'imgs-square/14.jpg', keywords: ['funny', 'actors'] },
+    { id: 15, url: 'imgs-square/15.jpg', keywords: ['funny', 'actors'] },
+    { id: 16, url: 'imgs-square/16.jpg', keywords: ['funny', 'actors'] },
+    { id: 17, url: 'imgs-square/17.jpg', keywords: ['funny', 'politicoes'] },
+    { id: 18, url: 'imgs-square/18.jpg', keywords: ['funny', 'kids'] },
 
 ];
 let gMeme = {
@@ -48,6 +48,10 @@ let gMeme = {
     ]
 }
 
+function filterParam(filterBy) {
+    changeParam('filterBy',filterBy)
+}
+
 function switchLine() {
     gMeme.selectedLineIdx++
     if (gMeme.selectedLineIdx === gMeme.lines.length) gMeme.selectedLineIdx = 0
@@ -70,7 +74,9 @@ function getMeme() {
     return gMeme
 }
 function getImgs() {
-    return gImgs
+    const filterBy = getValFromParam('filterBy')
+    if (!filterBy) return gImgs
+    return gImgs.filter(img => img.keywords.toString().includes(filterBy))
 }
 
 function getImgById(id) {

@@ -23,7 +23,14 @@
     <section class="main main-gallery gallery-layout">
         <nav class="gallery-nav">
             <label for="gallery-search">Search by key wards: </label>
-            <input id="gallery-search" type="text" placeholder="search">
+            <input id="gallery-search" list="filters" type="text" oninput="setFilterParam(this.value)" placeholder="search">
+            <datalist id="filters">
+                <option value="kids"></option>
+                <option value="funny"></option>
+                <option value="actors"></option>
+                <option value="animal"></option>
+                <option value="politicoes"></option>
+            </datalist>
         </nav>
         <div class="img-container"></div>
     </section>
@@ -46,12 +53,13 @@
             <button class="btn-down btn-round fa-s down" onclick="onMoveLine(10)"></button>
             <button class="btn-add btn-round fa-s add" onclick="onAddLine()"></button>
             <button class="btn-remove btn-round fa-s remove" onclick="onRemoveLine()"></button>
-            <a href="#" class="btn-download" onclick="renderMeme(true)" download="my-img.jpg">Download as jpeg</a>
+            <a href="#" class="btn-download" onclick=" downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
         </div>
     </section>
 
 
 
+    <script src="js/services/util-service.js"></script>
     <script src="js/services/gallery-service.js"></script>
     <script src="js/services/meme-service.js"></script>
     <script src="js/services/storage.service.js"></script>
