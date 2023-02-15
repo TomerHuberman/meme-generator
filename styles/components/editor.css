@@ -1,49 +1,5 @@
-.editor {
-    background-color: #820d0d;
-    padding: 15px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 50px 50px 50px 50px;
-    gap: 8px;
-    grid-template-areas:
-        "line line line line line"
-        "inc inc decr decr switch"
-        "color up down add remove"
-        "download e e e e"
-    ;
+.main-editor{
+    background-color: var(--clr-1);
+    padding: 40px
 }
 
-.editor .txt-input {
-    grid-area: line;
-}
-
-.editor .btn-increase {
-    grid-area: inc;
-}
-
-.editor .btn-decrease {
-    grid-area: decr;
-}
-
-.editor .btn-switch {
-    grid-area: switch;
-}
-
-.editor .btn-up {
-    grid-area: up;
-}
-
-.editor .btn-down {
-    grid-area: down;
-}
-
-.editor .btn-add {
-    grid-area: add;
-}
-
-.editor .btn-remove {
-    grid-area: remove;
-}
-.editor .btn-download {
-    grid-area: download;
-}

@@ -9,7 +9,6 @@ function onInit() {
     resizeCanvas()
     changeMainTo('gallery')
     renderGallery()
-    // renderMeme()
     window.addEventListener('resize', () => {
         resizeCanvas()
         renderMeme()
@@ -86,5 +85,5 @@ function downloadImg() {
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.offsetWidth
-    gElCanvas.height = elContainer.offsetHeight
+    gElCanvas.height = elContainer.offsetHeight 
 }

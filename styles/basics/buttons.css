@@ -7,9 +7,10 @@ button {
     cursor: pointer;
     border: 2px solid var(--clr-1);
     font-size: 1em;
-    padding: 0.625em 1.625em;
-    
-    position: relative;
+    padding: 10px 20px;
+    width: fit-content;
+    height: fit-content;
+    /* position: relative; */
 }
 
 
@@ -27,7 +28,7 @@ button:hover {
 
 /* // Arrow */
 
-.btn-arrow {
+/* .btn-arrow {
     transition: padding .4s;
 }
 
@@ -39,4 +40,4 @@ button:hover {
     content: " →";
     position: absolute;
     right: 1em;
-}
+} */

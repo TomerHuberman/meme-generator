@@ -2,12 +2,13 @@
   box-sizing: border-box;
 }
 html {
-  color: #5a5959;
+  color: var(--clr2);
 }
 
 body {
   font-size: 1rem;
   margin: 0;
+  background-color: var(--clr2);
 }
 img {
   width: 100%;

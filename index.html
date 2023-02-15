@@ -11,7 +11,7 @@
 
 <body onload="onInit()">
     <header class="main-header flex space-between align-center">
-        <div class="logo"> LOGO </div>
+        <div class="logo" > LOGO </div>
         <nav class="main-nav">
             <ul class="main-menu clean-list flex">
                 <li><a class="active" href="#" onclick="changeMainTo('gallery')">Gallery</a></li>
@@ -39,13 +39,13 @@
         <div class="editor">
             <input class="txt-input" type="text" oninput="onSetLineTxt(this.value)">
             <input type="color" oninput="onChangeColor(this.value)">
-            <button class="btn-increase" onclick="onScaleFont(5)">Increase</button>
-            <button class="btn-decrease" onclick="onScaleFont(-5)">Decrease</button>
-            <button class="btn-switch" onclick="onSwitchLine()">Switch Line</button>
-            <button class="btn-up" onclick="onMoveLine(-10)">Line Up</button>
-            <button class="btn-down" onclick="onMoveLine(10)">Line Down</button>
-            <button class="btn-add" onclick="onAddLine()">Add Line</button>
-            <button class="btn-remove" onclick="onRemoveLine()">Remove Line</button>
+            <button class="btn-increase btn-round fa-s maxi" onclick="onScaleFont(5)"></button>
+            <button class="btn-decrease btn-round fa-s mini" onclick="onScaleFont(-5)"></button>
+            <button class="btn-switch btn-round" onclick="onSwitchLine()">Switch Line</button>
+            <button class="btn-up btn-round fa-s up" onclick="onMoveLine(-10)"></button>
+            <button class="btn-down btn-round fa-s down" onclick="onMoveLine(10)"></button>
+            <button class="btn-add btn-round fa-s add" onclick="onAddLine()"></button>
+            <button class="btn-remove btn-round fa-s remove" onclick="onRemoveLine()"></button>
             <a href="#" class="btn-download" onclick="renderMeme(true)" download="my-img.jpg">Download as jpeg</a>
         </div>
     </section>
