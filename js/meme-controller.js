@@ -8,15 +8,15 @@ function onInit() {
     gCtx = gElCanvas.getContext('2d')
     resizeCanvas()
     changeMainTo('gallery')
-    renderMeme()
     renderGallery()
+    // renderMeme()
     window.addEventListener('resize', () => {
         resizeCanvas()
         renderMeme()
     })
 }
 
-function renderMeme() {
+function renderMeme(d) {
     let currMeme = getMeme()
     let currImg = getImgById(currMeme.selectedImgId)
     const img = new Image() // Create a new html img element
@@ -26,6 +26,9 @@ function renderMeme() {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         drawText(currMeme.lines)
         setTxtInputValue()
+        if (d) return downloadImg()
+        const { x, y } = getCurrLine()
+        selectedLine(x, y)
     }
 }
 
@@ -42,6 +45,7 @@ function onScaleFont(num) {
 function onSwitchLine() {
     switchLine()
     setTxtInputValue()
+    renderMeme()
 }
 
 function setTxtInputValue() {
@@ -54,19 +58,28 @@ function onSetLineTxt(txt) {
     renderMeme()
 }
 
-function drawText(lines) {
-    lines.forEach(line => {
-        gCtx.beginPath()
-        gCtx.lineWidth = 1
-        gCtx.strokeStyle = 'black'
-        gCtx.fillStyle = line.color
-        gCtx.font = `${line.size}px impact`
-        gCtx.textAlign = 'center'
-        gCtx.textBaseline = 'middle'
+function onMoveLine(num) {
+    moveLine(num)
+    renderMeme()
+}
 
-        gCtx.fillText(line.txt, line.x, line.y) // Draws (fills) a given text at the given (x, y) position.
-        gCtx.strokeText(line.txt, line.x, line.y) // Draws (strokes) a given text at the given (x, y) position.
-    });
+function onRemoveLine() {
+    removeLine()
+    renderMeme()
+}
+
+function onAddLine() {
+    addLine()
+    renderMeme()
+}
+
+function downloadImg() {
+    renderMeme(true)
+    setTimeout(() => {
+        const elLink = document.querySelector('.btn-download')
+        const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
+        elLink.href = imgContent
+    }, 500);
 
 }
 

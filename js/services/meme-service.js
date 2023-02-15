@@ -28,20 +28,22 @@ let gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'hey this is my 1st line',
+            txt: 'asdasdasd',
             size: 30,
             align: 'left',
             color: 'white',
             x: 225,
             y: 40,
+            pos: 'top'
         },
         {
-            txt: 'hey this is my 2nd line',
+            txt: 'hey line',
             size: 40,
             align: 'left',
             color: 'white',
             x: 225,
             y: 410,
+            pos: 'bottom'
         },
     ]
 }
@@ -53,6 +55,7 @@ function switchLine() {
 
 function scaleFont(num) {
     getCurrLine().size += num
+    selectedLine()
 }
 
 function changeColor(color) {
@@ -79,5 +82,70 @@ function setLineTxt(txt) {
 }
 
 function getCurrLine() {
-    return  gMeme.lines[gMeme.selectedLineIdx]
+    return gMeme.lines[gMeme.selectedLineIdx]
+}
+
+function moveLine(num) {
+    if (getCurrLine().y > 420 && num > 0 || getCurrLine().y < 30 && num < 0) return
+    getCurrLine().y += num
+}
+
+function removeLine() {
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
+}
+
+function addLine() {
+    const newLine = {
+        txt: 'Add text in here',
+        size: 30,
+        align: 'left',
+        color: 'white',
+        x: 225,
+    }
+    if (!gMeme.lines.find(line => line.pos === 'top')) {
+        newLine.y = 40
+        newLine.pos = 'top'
+    } else if (!gMeme.lines.find(line => line.pos === 'bottom')) {
+        newLine.y = 410
+        newLine.pos = 'bottom'
+    } else {
+        newLine.y = 225
+    }
+
+    gMeme.lines.push(newLine)
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
+}
+
+function drawText(lines) {
+    lines.forEach(line => {
+        gCtx.beginPath()
+        gCtx.lineWidth = 1
+        gCtx.strokeStyle = 'black'
+        gCtx.fillStyle = line.color
+        gCtx.font = `${line.size}px impact`
+        gCtx.textAlign = 'center'
+        gCtx.textBaseline = 'middle'
+
+        gCtx.fillText(line.txt, line.x, line.y) // Draws (fills) a given text at the given (x, y) position.
+        gCtx.strokeText(line.txt, line.x, line.y) // Draws (strokes) a given text at the given (x, y) position.
+    });
+}
+
+function selectedLine(x, y) {
+    gCtx.beginPath()
+    gCtx.lineWidth = 3
+    const line = getCurrLine()
+    const width = gCtx.measureText(line.txt).width + 10
+    console.log("line.txt: ", line.txt);
+    console.log("width: ", width);
+    const height = line.size + 10
+    gCtx.strokeRect(x - width / 2, y - height / 2, width, height)
+}
+
+function isLineClick() {
+    const line = getCurrLine()
+    const width = gCtx.measureText(line.txt).width + 10
+    const height = line.size + 10
+    x - width / 2, y - height / 2, width, height
 }

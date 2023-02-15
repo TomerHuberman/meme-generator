@@ -40,8 +40,13 @@
             <input class="txt-input" type="text" oninput="onSetLineTxt(this.value)">
             <input type="color" oninput="onChangeColor(this.value)">
             <button class="btn-increase" onclick="onScaleFont(5)">Increase</button>
-            <button class="btn-decrease"  onclick="onScaleFont(-5)">Decrease</button>
+            <button class="btn-decrease" onclick="onScaleFont(-5)">Decrease</button>
             <button class="btn-switch" onclick="onSwitchLine()">Switch Line</button>
+            <button class="btn-up" onclick="onMoveLine(-10)">Line Up</button>
+            <button class="btn-down" onclick="onMoveLine(10)">Line Down</button>
+            <button class="btn-add" onclick="onAddLine()">Add Line</button>
+            <button class="btn-remove" onclick="onRemoveLine()">Remove Line</button>
+            <a href="#" class="btn-download" onclick="renderMeme(true)" download="my-img.jpg">Download as jpeg</a>
         </div>
     </section>
 
