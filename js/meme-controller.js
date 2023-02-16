@@ -2,6 +2,7 @@
 
 let gElCanvas
 let gCtx
+let gStartPos
 
 function onInit() {
     gElCanvas = document.querySelector('canvas')
@@ -9,11 +10,7 @@ function onInit() {
     resizeCanvas()
     changeMainTo('gallery')
     renderGallery()
-    // filterParam('')
-    window.addEventListener('resize', () => {
-        resizeCanvas()
-        renderMeme()
-    })
+    addListeners()
 }
 
 function renderMeme(d) {
@@ -32,6 +29,84 @@ function renderMeme(d) {
     }
 }
 
+//Handle the listeners
+function addListeners() {
+    addMouseListeners()
+    // addTouchListeners()
+    //Listen for resize ev
+    window.addEventListener('resize', () => {
+        resizeCanvas()
+        renderMeme()
+    })
+}
+
+function addMouseListeners() {
+    gElCanvas.addEventListener('mousedown', onDown)
+    gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mouseup', onUp)
+}
+
+function addTouchListeners() {
+    gElCanvas.addEventListener('touchstart', onDown)
+    gElCanvas.addEventListener('touchmove', onMove)
+    gElCanvas.addEventListener('touchend', onUp)
+}
+
+function onDown(ev) {
+    const pos = getEvPos(ev)
+    const idx = witchLineClick(pos.x, pos.y)
+    if (idx === -1) return
+    onSwitchLine(idx)
+    setLineDrag(true)
+    renderMeme()
+    gStartPos = pos
+    document.body.style.cursor = 'grabbing'
+
+}
+
+function onMove(ev) {
+    const { isDrag } = getCurrLine()
+    if (!isDrag) return
+  
+    const pos = getEvPos(ev)
+    // Calc the delta , the diff we moved
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+    moveLine(dx, dy)
+    // Save the last pos , we remember where we`ve been and move accordingly
+    gStartPos = pos
+    // The canvas is render again after every move
+    renderMeme()
+  }
+
+  function onUp() {
+    // console.log('Up')
+    setLineDrag(false)
+    document.body.style.cursor = 'default'
+  }
+
+
+function getEvPos(ev) {
+    // Gets the offset pos , the default pos
+    let pos = {
+        x: ev.offsetX,
+        y: ev.offsetY,
+    }
+    // Check if its a touch ev
+    // if (TOUCH_EVS.includes(ev.type)) {
+    //     //soo we will not trigger the mouse ev
+    //     ev.preventDefault()
+    //     //Gets the first touch point
+    //     ev = ev.changedTouches[0]
+    //     //Calc the right pos according to the touch screen
+    //     pos = {
+    //         x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+    //         y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+    //     }
+    // }
+    return pos
+}
+
 function onChangeColor(color) {
     changeColor(color)
     renderMeme()
@@ -42,8 +117,8 @@ function onScaleFont(num) {
     renderMeme()
 }
 
-function onSwitchLine() {
-    switchLine()
+function onSwitchLine(idx) {
+    switchLine(idx)
     setTxtInputValue()
     renderMeme()
 }
@@ -59,7 +134,7 @@ function onSetLineTxt(txt) {
 }
 
 function onMoveLine(num) {
-    moveLine(num)
+    moveLineBtn(num)
     renderMeme()
 }
 

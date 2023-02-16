@@ -23,18 +23,19 @@
   place-items: center;
   padding: 25px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 50px 50px 50px 50px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 40px);
   gap: 8px;
   border-radius: 30px;
   box-shadow: -10px 6px 15px var(--clr3);
   grid-template-areas:
-    "line line line line line"
-    "up inc switch switch switch"
-    "down decr color remove add"
-    "download e e e e"
+    "line line line"
+    "up inc remove"
+    "down decr  add"
+    " switch switch switch"
+    "download color e "
   ;
-}
+}  
 
 .editor .txt-input {
   grid-area: line;
@@ -72,4 +73,8 @@
 
 .editor .btn-download {
   grid-area: download;
+}
+
+.editor .color {
+  grid-area: color;
 }

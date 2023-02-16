@@ -4,7 +4,7 @@ let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 let gImgs = [
     { id: 1, url: 'imgs-square/1.jpg', keywords: ['funny', 'politicoes'] },
-    { id: 2, url: 'imgs-square/2.jpg', keywords: [ 'animal'] },
+    { id: 2, url: 'imgs-square/2.jpg', keywords: ['animal'] },
     { id: 3, url: 'imgs-square/3.jpg', keywords: ['kids', 'animal'] },
     { id: 4, url: 'imgs-square/4.jpg', keywords: ['animal'] },
     { id: 5, url: 'imgs-square/5.jpg', keywords: ['funny', 'kids'] },
@@ -27,34 +27,33 @@ let gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     lines: [
-        {
-            txt: 'asdasdasd',
-            size: 30,
-            align: 'left',
-            color: 'white',
-            x: 225,
-            y: 40,
-            pos: 'top'
-        },
-        {
-            txt: 'hey line',
-            size: 40,
-            align: 'left',
-            color: 'white',
-            x: 225,
-            y: 410,
-            pos: 'bottom'
-        },
+        // {
+        //     txt: 'asdasdasd',
+        //     size: 30,
+        //     align: 'left',
+        //     color: 'white',
+        //     x: 225,
+        //     y: 40,
+        //     pos: 'top'
+        // },
+        // {
+        //     txt: 'hey line',
+        //     size: 40,
+        //     align: 'left',
+        //     color: 'white',
+        //     x: 225,
+        //     y: 410,
+        //     pos: 'bottom'
+        // },
     ]
 }
 
 function filterParam(filterBy) {
-    changeParam('filterBy',filterBy)
+    changeParam('filterBy', filterBy)
 }
 
-function switchLine() {
-    gMeme.selectedLineIdx++
-    if (gMeme.selectedLineIdx === gMeme.lines.length) gMeme.selectedLineIdx = 0
+function switchLine(idx) {
+    gMeme.selectedLineIdx = idx
 }
 
 function scaleFont(num) {
@@ -91,7 +90,7 @@ function getCurrLine() {
     return gMeme.lines[gMeme.selectedLineIdx]
 }
 
-function moveLine(num) {
+function moveLineBtn(num) {
     if (getCurrLine().y > 420 && num > 0 || getCurrLine().y < 30 && num < 0) return
     getCurrLine().y += num
 }
@@ -107,16 +106,18 @@ function addLine() {
         size: 30,
         align: 'left',
         color: 'white',
-        x: 225,
+        isDrag: false,
+        x: gElCanvas.width / 2,
+
     }
     if (!gMeme.lines.find(line => line.pos === 'top')) {
         newLine.y = 40
         newLine.pos = 'top'
     } else if (!gMeme.lines.find(line => line.pos === 'bottom')) {
-        newLine.y = 410
+        newLine.y = gElCanvas.height - 40
         newLine.pos = 'bottom'
     } else {
-        newLine.y = 225
+        newLine.y = gElCanvas.height / 2
     }
 
     gMeme.lines.push(newLine)
@@ -143,15 +144,25 @@ function selectedLine(x, y) {
     gCtx.lineWidth = 3
     const line = getCurrLine()
     const width = gCtx.measureText(line.txt).width + 10
-    console.log("line.txt: ", line.txt);
-    console.log("width: ", width);
     const height = line.size + 10
     gCtx.strokeRect(x - width / 2, y - height / 2, width, height)
 }
 
-function isLineClick() {
+function moveLine(dx, dy) {
     const line = getCurrLine()
-    const width = gCtx.measureText(line.txt).width + 10
-    const height = line.size + 10
-    x - width / 2, y - height / 2, width, height
+    line.x += dx
+    line.y += dy
+}
+
+function setLineDrag(isDrag) {
+    getCurrLine().isDrag = isDrag
+}
+
+function witchLineClick(x, y) {
+    return gMeme.lines.findIndex(line => {
+        const width = gCtx.measureText(line.txt).width + 10
+        const height = line.size + 10
+        return line.x - width / 2 < x && line.x + width / 2 > x &&
+            line.y - height / 2 < y && line.y + height / 2 > y
+    })
 }

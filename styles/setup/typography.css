@@ -46,6 +46,10 @@
   content: "\f53f";
 }
 
+.fa-s.download::before {
+  content: "\f1c5   \f019";
+}
+
 /* 
 .fa.facebook::before {
   content: "\f39e";

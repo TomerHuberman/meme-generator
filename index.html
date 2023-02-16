@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <link rel="stylesheet" href="styles/style.css" />
     <title>Meme Generator</title>
 </head>
 
 <body onload="onInit()">
     <header class="main-header flex space-between align-center">
-        <div class="logo" > LOGO </div>
+        <div class="logo"> LOGO </div>
         <nav class="main-nav">
             <ul class="main-menu clean-list flex">
                 <li><a class="active" href="#" onclick="changeMainTo('gallery')">Gallery</a></li>
@@ -23,7 +24,8 @@
     <section class="main main-gallery gallery-layout">
         <nav class="gallery-nav">
             <label for="gallery-search">Search by key wards: </label>
-            <input id="gallery-search" list="filters" type="text" oninput="setFilterParam(this.value)" placeholder="search">
+            <input id="gallery-search" list="filters" type="text" oninput="setFilterParam(this.value)"
+                placeholder="search">
             <datalist id="filters">
                 <option value="kids"></option>
                 <option value="funny"></option>
@@ -45,26 +47,28 @@
 
         <div class="editor">
             <input class="txt-input" type="text" oninput="onSetLineTxt(this.value)">
-            <input type="color" oninput="onChangeColor(this.value)">
+            <label for="change-color" class="btn btn-round color fa-s palette"></label>
+            <input class="color" type="color" id="change-color" style="opacity: 0;" oninput="onChangeColor(this.value)">
             <button class="btn-increase btn-round fa-s maxi" onclick="onScaleFont(5)"></button>
             <button class="btn-decrease btn-round fa-s mini" onclick="onScaleFont(-5)"></button>
-            <button class="btn-switch btn-round" onclick="onSwitchLine()">Switch Line</button>
+            <!-- <button class="btn-switch btn-round" onclick="onSwitchLine()">Switch Line</button> -->
             <button class="btn-up btn-round fa-s up" onclick="onMoveLine(-10)"></button>
             <button class="btn-down btn-round fa-s down" onclick="onMoveLine(10)"></button>
             <button class="btn-add btn-round fa-s add" onclick="onAddLine()"></button>
             <button class="btn-remove btn-round fa-s remove" onclick="onRemoveLine()"></button>
-            <a href="#" class="btn-download" onclick=" downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
+            <a href="#" class="btn btn-download btn-round fa-s download" onclick=" downloadImg(this)"
+                download="my-img.jpg"></a>
         </div>
     </section>
 
 
 
     <script src="js/services/util-service.js"></script>
+    <script src="js/gallery-cntroller.js"></script>
+    <script src="js/meme-controller.js"></script>
     <script src="js/services/gallery-service.js"></script>
     <script src="js/services/meme-service.js"></script>
     <script src="js/services/storage.service.js"></script>
-    <script src="js/gallery-cntroller.js"></script>
-    <script src="js/meme-controller.js"></script>
 </body>
 
 </html>

@@ -26,6 +26,16 @@ button:hover {
     border-radius: 2em;
 }
 
+.btn {
+    padding: 8px;
+    width: inherit;
+    text-align: center;
+    text-decoration: none;
+    color: var(--clr-1);
+    border: 2px solid var(--clr-1);
+    cursor: pointer;
+}
+
 /* // Arrow */
 
 /* .btn-arrow {

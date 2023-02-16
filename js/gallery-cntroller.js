@@ -17,6 +17,8 @@ function setFilterParam(filterBy) {
 function onSetImg(id) {
     changeMainTo('editor')
     setImg(id)
+    addLine()
+    addLine()
     renderMeme()
 }
 

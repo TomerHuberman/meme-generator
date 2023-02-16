@@ -26,8 +26,8 @@
 
   /* Editor */
   .editor-layout {
-    grid-template-columns: 450px;
-    grid-template-rows: 450px 300px;
+    grid-template-columns: 250px;
+    grid-template-rows: 250px 300px;
   }
 }
 
@@ -35,58 +35,6 @@
   .gallery-layout .img-container {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     margin-inline: 20px;
-  }
-
-  /* Editor */
-
-  .editor {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 50px);
-    grid-template-areas:
-      "line line line"
-      "up inc remove"
-      "down decr  add"
-      " switch switch switch"
-      "download color e "
-    ;
-  }
-
-  .editor .txt-input {
-    grid-area: line;
-    justify-self: stretch;
-    height: 80%;
-  }
-
-  .editor .btn-increase {
-    grid-area: inc;
-  }
-
-  .editor .btn-decrease {
-    grid-area: decr;
-  }
-
-  .editor .btn-switch {
-    grid-area: switch;
-  }
-
-  .editor .btn-up {
-    grid-area: up;
-  }
-
-  .editor .btn-down {
-    grid-area: down;
-  }
-
-  .editor .btn-add {
-    grid-area: add;
-  }
-
-  .editor .btn-remove {
-    grid-area: remove;
-  }
-
-  .editor .btn-download {
-    grid-area: download;
   }
 
 }
