@@ -143,8 +143,8 @@ function selectedLine(x, y) {
     gCtx.beginPath()
     gCtx.lineWidth = 3
     const line = getCurrLine()
-    const width = gCtx.measureText(line.txt).width + 10
     const height = line.size + 10
+    const width = gCtx.measureText(line.txt).width + 10
     gCtx.strokeRect(x - width / 2, y - height / 2, width, height)
 }
 
@@ -165,4 +165,8 @@ function witchLineClick(x, y) {
         return line.x - width / 2 < x && line.x + width / 2 > x &&
             line.y - height / 2 < y && line.y + height / 2 > y
     })
+}
+
+function SaveToMemes() {
+    saveToStorage('memes', gMeme)
 }

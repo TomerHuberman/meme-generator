@@ -33,7 +33,7 @@ function renderMeme(d) {
 //Handle the listeners
 function addListeners() {
     addMouseListeners()
-    // addTouchListeners()
+    addTouchListeners()
     //Listen for resize ev
     window.addEventListener('resize', () => {
         resizeCanvas()
@@ -54,6 +54,12 @@ function addTouchListeners() {
 }
 
 function onDown(ev) {
+    if (!gMeme.lines.length) {
+        addLine()
+        renderMeme()
+        return
+    }
+
     const pos = getEvPos(ev)
     const idx = witchLineClick(pos.x, pos.y)
     if (idx === -1) return
@@ -68,7 +74,7 @@ function onDown(ev) {
 function onMove(ev) {
     const { isDrag } = getCurrLine()
     if (!isDrag) return
-  
+
     const pos = getEvPos(ev)
     // Calc the delta , the diff we moved
     const dx = pos.x - gStartPos.x
@@ -78,13 +84,13 @@ function onMove(ev) {
     gStartPos = pos
     // The canvas is render again after every move
     renderMeme()
-  }
+}
 
-  function onUp() {
+function onUp() {
     // console.log('Up')
     setLineDrag(false)
     document.body.style.cursor = 'default'
-  }
+}
 
 
 function getEvPos(ev) {
@@ -149,8 +155,11 @@ function onAddLine() {
     renderMeme()
 }
 
+function onSaveToMemes(){
+    saveToMemes()
+}
+
 function downloadImg(elLink) {
-    if (confirm('are you sure you want to download?')) return
     const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
     elLink.href = imgContent
 }

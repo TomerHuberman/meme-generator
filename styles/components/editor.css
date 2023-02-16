@@ -3,3 +3,7 @@
     padding: 40px
 }
 
+.input-color{
+    opacity: 0;
+    cursor: pointer;
+}

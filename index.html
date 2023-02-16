@@ -48,10 +48,10 @@
         <div class="editor">
             <input class="txt-input" type="text" oninput="onSetLineTxt(this.value)">
             <label for="change-color" class="btn btn-round color fa-s palette"></label>
-            <input class="color" type="color" id="change-color" style="opacity: 0;" oninput="onChangeColor(this.value)">
+            <input class="color input-color" type="color" id="change-color" oninput="onChangeColor(this.value)">
             <button class="btn-increase btn-round fa-s maxi" onclick="onScaleFont(5)"></button>
             <button class="btn-decrease btn-round fa-s mini" onclick="onScaleFont(-5)"></button>
-            <!-- <button class="btn-switch btn-round" onclick="onSwitchLine()">Switch Line</button> -->
+            <button class="btn-switch btn-round" onclick="onSaveToMemes()">Save to Memes</button>
             <button class="btn-up btn-round fa-s up" onclick="onMoveLine(-10)"></button>
             <button class="btn-down btn-round fa-s down" onclick="onMoveLine(10)"></button>
             <button class="btn-add btn-round fa-s add" onclick="onAddLine()"></button>
