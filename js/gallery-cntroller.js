@@ -31,4 +31,5 @@ function changeMainTo(section) {
     })
     const elMain = document.querySelector(`.main-${section}`)
     elMain.classList.remove('none')
+    if (section === 'memes') renderMemes()
 }

@@ -32,7 +32,8 @@
 }
 
 @media (min-width: 740px) {
-  .gallery-layout .img-container {
+  .gallery-layout .img-container,
+  .gallery-layout .memes-container {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     margin-inline: 20px;
   }
@@ -43,7 +44,8 @@
 /* 880px */
 
 @media (min-width: 930px) {
-  .gallery-layout .img-container {
+  .gallery-layout .img-container,
+  .gallery-layout .memes-container {
     grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
     margin-inline: 30px;
   }
@@ -53,7 +55,8 @@
 /* 1060px */
 
 @media (min-width: 1110px) {
-  .gallery-layout .img-container {
+  .gallery-layout .img-container,
+  .gallery-layout .memes-container {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     margin-inline: 40px;
   }

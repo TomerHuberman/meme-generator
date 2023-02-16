@@ -133,6 +133,7 @@ function onSwitchLine(idx) {
 function setTxtInputValue() {
     const elTxtInput = document.querySelector('.txt-input')
     elTxtInput.value = getCurrLine().txt
+    elTxtInput.focus()
 }
 
 function onSetLineTxt(txt) {
@@ -155,8 +156,17 @@ function onAddLine() {
     renderMeme()
 }
 
-function onSaveToMemes(){
-    saveToMemes()
+function onSaveToMemes() {
+    renderMeme(true)
+    const elLink = document.querySelector('.link-download')
+    setTimeout(() => saveToMemes(), 500)
+
+}
+
+function renderImgToDownload() {
+    renderMeme(true)
+    const elLink = document.querySelector('.link-download')
+    setTimeout(() => elLink.click(), 500)
 }
 
 function downloadImg(elLink) {

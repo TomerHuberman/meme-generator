@@ -16,7 +16,7 @@
         <nav class="main-nav">
             <ul class="main-menu clean-list flex">
                 <li><a class="active" href="#" onclick="changeMainTo('gallery')">Gallery</a></li>
-                <li><a href="#" onclick="">Memes</a></li>
+                <li><a href="#" onclick="changeMainTo('memes')">Memes</a></li>
             </ul>
         </nav>
     </header>
@@ -56,19 +56,27 @@
             <button class="btn-down btn-round fa-s down" onclick="onMoveLine(10)"></button>
             <button class="btn-add btn-round fa-s add" onclick="onAddLine()"></button>
             <button class="btn-remove btn-round fa-s remove" onclick="onRemoveLine()"></button>
-            <a href="#" class="btn btn-download btn-round fa-s download" onclick=" downloadImg(this)"
+            <button href="#" class="btn btn-download btn-round fa-s download" onclick="renderImgToDownload()"
+                download="my-img.jpg"></button>
+            <a href="#" class="link-download none" onclick="downloadImg(this)"
                 download="my-img.jpg"></a>
         </div>
     </section>
 
+    <section class="main main-memes gallery-layout">
+        <div class="memes-container"></div>
+
+    </section>
 
 
+
+    <script src="js/services/storage.service.js"></script>
     <script src="js/services/util-service.js"></script>
     <script src="js/gallery-cntroller.js"></script>
     <script src="js/meme-controller.js"></script>
+    <script src="js/save-memes-controller.js"></script>
     <script src="js/services/gallery-service.js"></script>
     <script src="js/services/meme-service.js"></script>
-    <script src="js/services/storage.service.js"></script>
 </body>
 
 </html>

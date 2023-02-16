@@ -1,7 +1,7 @@
 'use strict'
 
 let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
-
+let gMemes = []
 let gImgs = [
     { id: 1, url: 'imgs-square/1.jpg', keywords: ['funny', 'politicoes'] },
     { id: 2, url: 'imgs-square/2.jpg', keywords: ['animal'] },
@@ -46,6 +46,10 @@ let gMeme = {
         //     pos: 'bottom'
         // },
     ]
+}
+
+function setMeme(meme) {
+    gMeme = meme
 }
 
 function filterParam(filterBy) {
@@ -167,6 +171,10 @@ function witchLineClick(x, y) {
     })
 }
 
-function SaveToMemes() {
-    saveToStorage('memes', gMeme)
+function saveToMemes() {
+    const memeToSave = JSON.parse(JSON.stringify(gMeme))
+    const imgContent = gElCanvas.toDataURL('image/jpeg')
+    memeToSave.memeImg = imgContent
+    gMemes.push(memeToSave)
+    saveToStorage('memes', gMemes)
 }
