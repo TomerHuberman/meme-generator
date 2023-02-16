@@ -1,17 +1,17 @@
 /* font awesome */
 @font-face {
   font-family: fa-b;
-  src: url(/fonts/fontAwesome/fa-brands-400.woff2);
+  src: url(/styles/fonts/fontAwesome/fa-brands-400.woff2);
 }
 
 @font-face {
   font-family: fa-solid;
-  src: url(/fonts/fontAwesome/fa-solid-900.woff2);
+  src: url(/styles/fonts/fontAwesome/fa-solid-900.woff2);
 }
 
 @font-face {
   font-family: impact;
-  src: url(/fonts/impact/impact.ttf);
+  src: url(/styles/fonts/impact/impact.ttf);
 }
 
 .fa-solid::before {

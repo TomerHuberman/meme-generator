@@ -3,7 +3,7 @@
     padding: 40px;
 }
 
-.main-memes .memes-container>*:hover {
+.main-memes img:hover {
     border: 5px solid var(--clr1);
     cursor: pointer;
     box-shadow: 11px 10px 17px 3px var(--clr3);
