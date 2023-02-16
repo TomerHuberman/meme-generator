@@ -1,6 +1,7 @@
 .gallery-nav {
-    padding:0 0 30px;
+    padding: 0 0 30px;
     margin-inline-start: 45px;
+    font-size: 1.6rem;
 }
 
 .main-gallery {

@@ -1,7 +1,7 @@
 'use strict'
 
 let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
-let gMemes = []
+let gMemes 
 let gImgs = [
     { id: 1, url: 'imgs-square/1.jpg', keywords: ['funny', 'politicoes'] },
     { id: 2, url: 'imgs-square/2.jpg', keywords: ['animal'] },
@@ -21,31 +21,16 @@ let gImgs = [
     { id: 16, url: 'imgs-square/16.jpg', keywords: ['funny', 'actors'] },
     { id: 17, url: 'imgs-square/17.jpg', keywords: ['funny', 'politicoes'] },
     { id: 18, url: 'imgs-square/18.jpg', keywords: ['funny', 'kids'] },
+    // { id: 19, url: 'imgs-not-square/putin.jpg', keywords: ['funny', 'kids'] },
 
 ];
+
+_getMemes()
+
 let gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
-    lines: [
-        // {
-        //     txt: 'asdasdasd',
-        //     size: 30,
-        //     align: 'left',
-        //     color: 'white',
-        //     x: 225,
-        //     y: 40,
-        //     pos: 'top'
-        // },
-        // {
-        //     txt: 'hey line',
-        //     size: 40,
-        //     align: 'left',
-        //     color: 'white',
-        //     x: 225,
-        //     y: 410,
-        //     pos: 'bottom'
-        // },
-    ]
+    lines: []
 }
 
 function setMeme(meme) {
@@ -175,6 +160,12 @@ function saveToMemes() {
     const memeToSave = JSON.parse(JSON.stringify(gMeme))
     const imgContent = gElCanvas.toDataURL('image/jpeg')
     memeToSave.memeImg = imgContent
+    memeToSave.isFromStorage = true
     gMemes.push(memeToSave)
     saveToStorage('memes', gMemes)
+}
+
+function _getMemes() {
+    const memes = loadFromStorage('memes')
+    gMemes = memes ? memes : []
 }

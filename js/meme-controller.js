@@ -159,7 +159,10 @@ function onAddLine() {
 function onSaveToMemes() {
     renderMeme(true)
     const elLink = document.querySelector('.link-download')
-    setTimeout(() => saveToMemes(), 500)
+    setTimeout(() => {
+        saveToMemes()
+        changeMainTo('memes')
+    }, 500)
 
 }
 

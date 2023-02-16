@@ -28,6 +28,7 @@ function changeMainTo(section) {
     const elMains = document.querySelectorAll('.main')
     elMains.forEach(main => {
         main.classList.add('none')
+
     })
     const elMain = document.querySelector(`.main-${section}`)
     elMain.classList.remove('none')

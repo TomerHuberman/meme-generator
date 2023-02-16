@@ -19,13 +19,6 @@ button:hover {
     border: 2px solid var(--clrbase);
 }
 
-
-/* Round */
-
-.btn-round {
-    border-radius: 2em;
-}
-
 .btn {
     padding: 8px;
     width: inherit;
@@ -35,19 +28,8 @@ button:hover {
     border: 2px solid var(--clr-1);
     cursor: pointer;
 }
+/* Round */
 
-/* // Arrow */
-
-/* .btn-arrow {
-    transition: padding .4s;
+.btn-round {
+    border-radius: 2em;
 }
-
-.btn-arrow:hover {
-    padding-inline-end: 2.5em;
-}
-
-.btn-arrow:hover::after {
-    content: " →";
-    position: absolute;
-    right: 1em;
-} */

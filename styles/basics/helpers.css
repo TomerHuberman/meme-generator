@@ -27,3 +27,7 @@
 .grid {
   display: grid;
 }
+
+.active::after {
+  box-shadow: 0 0 0 black;
+}

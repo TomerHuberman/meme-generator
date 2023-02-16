@@ -5,7 +5,7 @@
 }
 
 @font-face {
-  font-family: fa-s;
+  font-family: fa-solid;
   src: url(/fonts/fontAwesome/fa-solid-900.woff2);
 }
 
@@ -14,39 +14,39 @@
   src: url(/fonts/impact/impact.ttf);
 }
 
-.fa-s::before {
-  font-family: fa-s;
+.fa-solid::before {
+  font-family: fa-solid;
 }
 
-.fa-s.mini::before {
+.fa-solid.fa-minimize::before {
   content: "\f78c";
 }
 
-.fa-s.maxi::before {
+.fa-solid.fa-up-down-left-right::before {
   content: "\f0b2";
 }
 
-.fa-s.down::before {
+.fa-solid.fa-angles-down::before {
   content: "\f103";
 }
 
-.fa-s.up::before {
+.fa-solid.fa-angles-up::before {
   content: "\f102";
 }
 
-.fa-s.remove::before {
+.fa-solid.fa-trash-can::before {
   content: "\f2ed";
 }
 
-.fa-s.add::before {
+.fa-solid.fa-plus::before {
   content: "\2b";
 }
 
-.fa-s.palette::before {
+.fa-solid.fa-palette::before {
   content: "\f53f";
 }
 
-.fa-s.download::before {
+.fa-solid.fa-file-image.fa-download::before {
   content: "\f1c5   \f019";
 }
 

@@ -1,0 +1,21 @@
+.main-memes {
+    background-color: var(--clr-1);
+    padding: 40px;
+}
+
+.main-memes .memes-container>*:hover {
+    border: 5px solid var(--clr1);
+    cursor: pointer;
+    box-shadow: 11px 10px 17px 3px var(--clr3);
+}
+
+.memes-container .img-storage-container {
+    position: relative;
+}
+
+.memes-container .btn-delete-storage {
+    position: absolute;
+    left: -6px;
+    top: -4px;
+    padding: 4px 7px;
+}

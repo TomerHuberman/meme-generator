@@ -21,11 +21,11 @@
 }
 
 .main-header .main-nav a {
-  width: 100px;
+  width: fit-content;
   height: 100px;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 8px;
   font-weight: 700;
   
   text-transform: uppercase;

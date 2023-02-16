@@ -1,5 +1,9 @@
 /* Main Layout */
 
+.main{
+  height: 100%;
+}
+
 .editor-layout {
   display: grid;
   grid-template-columns: 450px 30vw;

@@ -19,16 +19,25 @@
   }
 
   .main-header .main-nav a {
-    width: 80px;
+    width: fit-content;
     height: 80px;
-    padding: 20px;
   }
+
+  .gallery-nav {
+    padding: 0 0 30px;
+    margin-inline-start: 25px;
+    font-size: 1.2rem;
+}
+
 
   /* Editor */
   .editor-layout {
     grid-template-columns: 250px;
     grid-template-rows: 250px 300px;
   }
+
+
+
 }
 
 @media (min-width: 740px) {
@@ -37,6 +46,12 @@
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     margin-inline: 20px;
   }
+    /* Saved memes */
+  .memes-container .btn-delete-storage{
+    left: -12px;
+    top: -1px;
+    padding: 8px 10px;
+}
 
 }
 

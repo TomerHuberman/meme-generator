@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles/style.css" />
     <title>Meme Generator</title>
 </head>
@@ -16,7 +16,7 @@
         <nav class="main-nav">
             <ul class="main-menu clean-list flex">
                 <li><a class="active" href="#" onclick="changeMainTo('gallery')">Gallery</a></li>
-                <li><a href="#" onclick="changeMainTo('memes')">Memes</a></li>
+                <li><a href="#" onclick="changeMainTo('memes')">My Memes</a></li>
             </ul>
         </nav>
     </header>
@@ -46,20 +46,19 @@
         </div>
 
         <div class="editor">
-            <input class="txt-input" type="text" oninput="onSetLineTxt(this.value)">
-            <label for="change-color" class="btn btn-round color fa-s palette"></label>
+            <input class="txt-input" placeholder="type text here" type="text" oninput="onSetLineTxt(this.value)">
+            <label for="change-color" class="btn btn-round color fa-solid fa-palette"></label>
             <input class="color input-color" type="color" id="change-color" oninput="onChangeColor(this.value)">
-            <button class="btn-increase btn-round fa-s maxi" onclick="onScaleFont(5)"></button>
-            <button class="btn-decrease btn-round fa-s mini" onclick="onScaleFont(-5)"></button>
+            <button class="btn-increase btn-round fa-solid fa-up-down-left-right" onclick="onScaleFont(5)"></button>
+            <button class="btn-decrease btn-round fa-solid fa-minimize" onclick="onScaleFont(-5)"></button>
             <button class="btn-switch btn-round" onclick="onSaveToMemes()">Save to Memes</button>
-            <button class="btn-up btn-round fa-s up" onclick="onMoveLine(-10)"></button>
-            <button class="btn-down btn-round fa-s down" onclick="onMoveLine(10)"></button>
-            <button class="btn-add btn-round fa-s add" onclick="onAddLine()"></button>
-            <button class="btn-remove btn-round fa-s remove" onclick="onRemoveLine()"></button>
-            <button href="#" class="btn btn-download btn-round fa-s download" onclick="renderImgToDownload()"
+            <button class="btn-up btn-round fa-solid fa-angles-up" onclick="onMoveLine(-10)"></button>
+            <button class="btn-down btn-round fa-solid fa-angles-down" onclick="onMoveLine(10)"></button>
+            <button class="btn-add btn-round fa-solid fa-plus" onclick="onAddLine()"></button>
+            <button class="btn-remove btn-round fa-solid fa-trash-can" onclick="onRemoveLine()"></button>
+            <button href="#" class="btn btn-download btn-round fa-solid fa-file-image fa-download" onclick="renderImgToDownload()"
                 download="my-img.jpg"></button>
-            <a href="#" class="link-download none" onclick="downloadImg(this)"
-                download="my-img.jpg"></a>
+            <a href="#" class="link-download none" onclick="downloadImg(this)" download="my-img.jpg"></a>
         </div>
     </section>
 
@@ -68,7 +67,7 @@
 
     </section>
 
-
+    <footer class="footer"><h2>Made by Tomer Huberman</h2></footer>
 
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/util-service.js"></script>
