@@ -8,7 +8,7 @@ button {
     border: 2px solid var(--clr-1);
     font-size: 1em;
     padding: 10px 20px;
-    width: fit-content;
+    width: inherit;
     height: fit-content;
     /* position: relative; */
 }

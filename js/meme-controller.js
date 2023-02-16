@@ -16,7 +16,7 @@ function onInit() {
     })
 }
 
-function renderMeme() {
+function renderMeme(d) {
     let currMeme = getMeme()
     let currImg = getImgById(currMeme.selectedImgId)
     const img = new Image() // Create a new html img element
@@ -26,6 +26,7 @@ function renderMeme() {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         drawText(currMeme.lines)
         setTxtInputValue()
+        if (d) return
         const { x, y } = getCurrLine()
         selectedLine(x, y)
     }
@@ -73,12 +74,13 @@ function onAddLine() {
 }
 
 function downloadImg(elLink) {
-        const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
-        elLink.href = imgContent
+    if (confirm('are you sure you want to download?')) return
+    const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
+    elLink.href = imgContent
 }
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.offsetWidth
-    gElCanvas.height = elContainer.offsetHeight 
+    gElCanvas.height = elContainer.offsetHeight
 }

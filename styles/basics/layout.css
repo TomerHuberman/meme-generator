@@ -10,11 +10,11 @@
 
 .gallery-layout .img-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   grid-auto-flow: dense;
   gap: 10px;
 
-  margin-inline: 40px;
+  margin-inline: 10px;
 }
 
 .editor {
@@ -30,8 +30,8 @@
   box-shadow: -10px 6px 15px var(--clr3);
   grid-template-areas:
     "line line line line line"
-    "inc decr switch switch switch"
-    "color up down remove add"
+    "up inc switch switch switch"
+    "down decr color remove add"
     "download e e e e"
   ;
 }
