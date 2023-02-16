@@ -1,7 +1,7 @@
 'use strict'
 
 let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
-let gMemes 
+let gMemes
 let gImgs = [
     { id: 1, url: 'imgs-square/1.jpg', keywords: ['funny', 'politicoes'] },
     { id: 2, url: 'imgs-square/2.jpg', keywords: ['animal'] },
@@ -22,7 +22,6 @@ let gImgs = [
     { id: 17, url: 'imgs-square/17.jpg', keywords: ['funny', 'politicoes'] },
     { id: 18, url: 'imgs-square/18.jpg', keywords: ['funny', 'kids'] },
     // { id: 19, url: 'imgs-not-square/putin.jpg', keywords: ['funny', 'kids'] },
-
 ];
 
 _getMemes()
@@ -89,6 +88,18 @@ function removeLine() {
     gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
+function addEmoji(emoji) {
+    const newEmoji = {
+        txt: `${emoji}`,
+        size: 50,
+        isDrag: false,
+        x: gElCanvas.width / 2,
+        y: gElCanvas.height / 2,
+    }
+    gMeme.lines.push(newEmoji)
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
+}
+
 function addLine() {
     const newLine = {
         txt: 'Add text in here',
@@ -128,12 +139,18 @@ function drawText(lines) {
     });
 }
 
-function selectedLine(x, y) {
+function measureText() {
     gCtx.beginPath()
-    gCtx.lineWidth = 3
     const line = getCurrLine()
     const height = line.size + 10
     const width = gCtx.measureText(line.txt).width + 10
+    return { height, width }
+}
+
+function selectedLine(x, y) {
+    gCtx.beginPath()
+    gCtx.lineWidth = 3
+    const { height, width } = measureText()
     gCtx.strokeRect(x - width / 2, y - height / 2, width, height)
 }
 

@@ -156,6 +156,11 @@ function onAddLine() {
     renderMeme()
 }
 
+function onAddEmoji(emoji) {
+    addEmoji(emoji)
+    renderMeme()
+}
+
 function onSaveToMemes() {
     renderMeme(true)
     const elLink = document.querySelector('.link-download')
