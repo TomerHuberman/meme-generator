@@ -33,7 +33,7 @@
   /* Editor */
   .editor-layout {
     grid-template-columns: 300px;
-    grid-template-rows: 250px 400px;
+    grid-template-rows: auto auto;
   }
 
   .editor {
@@ -42,7 +42,7 @@
     grid-template-rows: repeat(5, 40px);
     grid-template-areas:
       "line line line add"
-      "up inc down decr"
+      "up down inc decr"
       "remove color e download"
       " switch switch switch switch"
       "file file file file"

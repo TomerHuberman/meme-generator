@@ -13,7 +13,9 @@
 }
 
 .main-header .logo {
+  margin: 0;
   margin-inline-start: 20px;
+  text-shadow: -6px -3px 4px #ac5c07;
 }
 
 .main-header .main-nav li{

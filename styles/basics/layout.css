@@ -8,7 +8,7 @@
   display: grid;
   grid-template-columns: 450px 30vw;
   justify-content: center;
-  grid-template-rows: 450px 100%;
+  grid-template-rows: auto;
   gap: 20px;
 }
 
@@ -24,6 +24,7 @@
 
 .editor {
   width: 100%;
+  height: fit-content;
   background-color: #be4c01;
   place-items: center;
   padding: 25px;

@@ -70,7 +70,6 @@ function loadImageFromInput(ev, onImageReady) {
     reader.onload = function (event) {
         let img = new Image() // Create a new html img element
         img.src = event.target.result // Set the img src to the img file we read
-        console.log("event.target.result: ", event.target.result);
         // Run the callBack func, To render the img on the canvas
         img.onload = onImageReady.bind(null, img)
         // Can also do it this way:
@@ -103,6 +102,10 @@ function getImgById(id) {
 
 function setLineTxt(txt) {
     getCurrLine().txt = txt
+}
+
+function clearEmpty() {
+    gMeme.lines = gMeme.lines.filter(line => line.txt !== '')  
 }
 
 function getCurrLine() {
@@ -140,7 +143,7 @@ function resetLines() {
 
 function addLine() {
     const newLine = {
-        txt: 'Add text in here',
+        txt: 'Text will be here',
         size: 30,
         align: 'left',
         fontFamily: 'impact',
@@ -157,7 +160,6 @@ function addLine() {
         newLine.pos = 'bottom'
     } else {
         newLine.y = gElCanvas.height / 2
-        console.log("gElCanvas.height: ", gElCanvas.height);
     }
 
     gMeme.lines.push(newLine)
@@ -182,7 +184,6 @@ function drawText(lines) {
 
 function measureText() {
     const { txt, size } = getCurrLine()
-    console.log("txt: ", txt);
     const height = size + 10
     const width = gCtx.measureText(txt).width + 10
     return { height, width }

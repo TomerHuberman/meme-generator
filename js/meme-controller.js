@@ -3,6 +3,7 @@
 let gElCanvas
 let gCtx
 let gStartPos
+let gLastHeight
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 function onInit() {
@@ -20,12 +21,17 @@ function renderMeme(d) {
     const img = new Image() // Create a new html img element
     img.src = currImg.url // Send a network req to get that image, define the img src
 
-    // When the image ready draw it on the canvas
-    if (img.height / img.width !== 1) {
+
+    const currHeight = getCanvasHeight(gElCanvas.width, img.height, img.width) + 'px'
+    if (gLastHeight !== currHeight) {
         const elContainer = document.querySelector('.canvas-container')
-        elContainer.style.height = getCanvasHeight(gElCanvas.width, img.height, img.width) + 'px'
+        gLastHeight =
+            elContainer.style.height = currHeight
         resizeCanvas()
     }
+
+
+    // When the image ready draw it on the canvas
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         drawText(currMeme.lines)
@@ -137,14 +143,15 @@ function onScaleFont(num) {
 
 function onSwitchLine(idx) {
     switchLine(idx)
+    clearEmpty()
     setTxtInputValue()
     renderMeme()
 }
 
 function setTxtInputValue() {
     const elTxtInput = document.querySelector('.txt-input')
-    elTxtInput.value = getCurrLine().txt
     elTxtInput.focus()
+    elTxtInput.value = (getCurrLine().txt === 'Text will be here') ? '' : getCurrLine().txt
 }
 
 function onSetLineTxt(txt) {
