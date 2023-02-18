@@ -19,8 +19,8 @@ function deleteFromStorage(idx) {
 }
 
 function onGetMeme(idx) {
+    changeMainTo('editor')
     const memes = loadFromStorage('memes')
     setMeme(memes[idx])
     renderMeme()
-    changeMainTo('editor')
 }

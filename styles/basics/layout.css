@@ -1,6 +1,6 @@
 /* Main Layout */
 
-.main{
+.main {
   height: 100%;
 }
 
@@ -29,7 +29,7 @@
   padding: 25px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(5, 40px);
+  grid-template-rows: repeat(6, 40px);
   gap: 8px;
   border-radius: 30px;
   box-shadow: -10px 6px 15px var(--clr3);
@@ -37,8 +37,10 @@
     "line line line"
     "up inc remove"
     "down decr  add"
-    "download color e "
+    "download color e"
     " switch switch switch"
+    "file file file"
+
   ;
 }
 
@@ -82,4 +84,12 @@
 
 .editor .color {
   grid-area: color;
+}
+
+.editor .emojis {
+  grid-area: e;
+}
+
+.editor .file-input {
+  grid-area: file;
 }

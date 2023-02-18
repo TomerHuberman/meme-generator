@@ -48,7 +48,7 @@
         <div class="editor">
             <input class="txt-input" placeholder="type text here" type="text" oninput="onSetLineTxt(this.value)">
             <label for="change-color" class="btn btn-round color fa-solid fa-palette"></label>
-            <input class="color input-color" type="color" id="change-color" oninput="onChangeColor(this.value)">
+            <input class="color input-color opacity0" type="color" id="change-color" oninput="onChangeColor(this.value)">
             <button class="btn-increase btn-round fa-solid fa-up-down-left-right" onclick="onScaleFont(5)"></button>
             <button class="btn-decrease btn-round fa-solid fa-minimize" onclick="onScaleFont(-5)"></button>
             <button class="btn-switch btn-round" onclick="onSaveToMemes()">Save to Memes</button>
@@ -69,6 +69,9 @@
                 <option>🕶️</option>
                 <option>☀️</option>
             </select>
+            <!-- <label for="new-image" class="btn btn-round new-image fa-solid fa-file-image"></label> -->
+            <input type="file" class="file-input" name="new-image" onchange="onImgInput(event)" />
+
         </div>
     </section>
 

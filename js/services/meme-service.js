@@ -21,7 +21,8 @@ let gImgs = [
     { id: 16, url: 'imgs-square/16.jpg', keywords: ['funny', 'actors'] },
     { id: 17, url: 'imgs-square/17.jpg', keywords: ['funny', 'politicoes'] },
     { id: 18, url: 'imgs-square/18.jpg', keywords: ['funny', 'kids'] },
-    // { id: 19, url: 'imgs-not-square/putin.jpg', keywords: ['funny', 'kids'] },
+    { id: 19, url: 'imgs-not-square/putin.jpg', keywords: ['funny', 'kids'] },
+    { id: 20, url: 'imgs-not-square/drevil.jpg', keywords: ['funny', 'kids'] },
 ];
 
 _getMemes()
@@ -30,6 +31,10 @@ let gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     lines: []
+}
+
+function getCanvasHeight(cw, ih, iw) {
+    return cw * ih / iw
 }
 
 function setMeme(meme) {
@@ -55,6 +60,32 @@ function changeColor(color) {
 
 function setImg(id) {
     gMeme.selectedImgId = id
+}
+
+
+// CallBack func will run on success load of the img
+function loadImageFromInput(ev, onImageReady) {
+    const reader = new FileReader()
+    // After we read the file
+    reader.onload = function (event) {
+        let img = new Image() // Create a new html img element
+        img.src = event.target.result // Set the img src to the img file we read
+        console.log("event.target.result: ", event.target.result);
+        // Run the callBack func, To render the img on the canvas
+        img.onload = onImageReady.bind(null, img)
+        // Can also do it this way:
+        // img.onload = () => onImageReady(img)
+    }
+    reader.readAsDataURL(ev.target.files[0]) // Read the file we picked
+}
+
+function addNewImg(img) {
+    gImgs.push(
+        { id: gImgs.length + 1, url: `${img.src}`, keywords: ['funny', 'kids'] },
+    )
+    setImg(gImgs.length)
+    resetLines()
+    renderMeme()
 }
 
 function getMeme() {
@@ -100,11 +131,19 @@ function addEmoji(emoji) {
     gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
+function resetLines() {
+    renderMeme()
+    gMeme.lines = []
+    addLine()
+    addLine()
+}
+
 function addLine() {
     const newLine = {
         txt: 'Add text in here',
         size: 30,
         align: 'left',
+        fontFamily: 'impact',
         color: 'white',
         isDrag: false,
         x: gElCanvas.width / 2,
@@ -118,6 +157,7 @@ function addLine() {
         newLine.pos = 'bottom'
     } else {
         newLine.y = gElCanvas.height / 2
+        console.log("gElCanvas.height: ", gElCanvas.height);
     }
 
     gMeme.lines.push(newLine)
@@ -128,6 +168,7 @@ function drawText(lines) {
     lines.forEach(line => {
         gCtx.beginPath()
         gCtx.lineWidth = 1
+        gCtx.fontFamily = line.fontFamily
         gCtx.strokeStyle = 'black'
         gCtx.fillStyle = line.color
         gCtx.font = `${line.size}px impact`
@@ -140,10 +181,10 @@ function drawText(lines) {
 }
 
 function measureText() {
-    gCtx.beginPath()
-    const line = getCurrLine()
-    const height = line.size + 10
-    const width = gCtx.measureText(line.txt).width + 10
+    const { txt, size } = getCurrLine()
+    console.log("txt: ", txt);
+    const height = size + 10
+    const width = gCtx.measureText(txt).width + 10
     return { height, width }
 }
 

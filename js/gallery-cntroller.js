@@ -17,10 +17,7 @@ function setFilterParam(filterBy) {
 function onSetImg(id) {
     changeMainTo('editor')
     setImg(id)
-    if (!gMeme.lines.length) {
-        addLine()
-        addLine()
-    }
+    resetLines()
     renderMeme()
 }
 

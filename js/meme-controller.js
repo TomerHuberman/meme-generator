@@ -19,7 +19,13 @@ function renderMeme(d) {
     let currImg = getImgById(currMeme.selectedImgId)
     const img = new Image() // Create a new html img element
     img.src = currImg.url // Send a network req to get that image, define the img src
+
     // When the image ready draw it on the canvas
+    if (img.height / img.width !== 1) {
+        const elContainer = document.querySelector('.canvas-container')
+        elContainer.style.height = getCanvasHeight(gElCanvas.width, img.height, img.width) + 'px'
+        resizeCanvas()
+    }
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         drawText(currMeme.lines)
@@ -29,6 +35,11 @@ function renderMeme(d) {
         selectedLine(x, y)
     }
 }
+
+function onImgInput(ev) {
+    loadImageFromInput(ev, addNewImg)
+}
+
 
 //Handle the listeners
 function addListeners() {

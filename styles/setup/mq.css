@@ -27,31 +27,57 @@
     padding: 0 0 30px;
     margin-inline-start: 25px;
     font-size: 1.2rem;
-}
+  }
 
 
   /* Editor */
   .editor-layout {
-    grid-template-columns: 250px;
-    grid-template-rows: 250px 300px;
+    grid-template-columns: 300px;
+    grid-template-rows: 250px 400px;
   }
 
+  .editor {
+    gap: 0px 5px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 40px);
+    grid-template-areas:
+      "line line line add"
+      "up inc down decr"
+      "remove color e download"
+      " switch switch switch switch"
+      "file file file file"
+    ;
+  }
 
+  button {
+    padding: 6px 20px;
+  }
+
+  .btn {
+    padding: 6px;
+  }
+
+  .canvas-container {
+    width: 250px;
+    height: 250px;
+  }
 
 }
 
 @media (min-width: 740px) {
+
   .gallery-layout .img-container,
   .gallery-layout .memes-container {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     margin-inline: 20px;
   }
-    /* Saved memes */
-  .memes-container .btn-delete-storage{
+
+  /* Saved memes */
+  .memes-container .btn-delete-storage {
     left: -12px;
     top: -1px;
     padding: 8px 10px;
-}
+  }
 
 }
 
@@ -59,6 +85,7 @@
 /* 880px */
 
 @media (min-width: 930px) {
+
   .gallery-layout .img-container,
   .gallery-layout .memes-container {
     grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
@@ -70,6 +97,7 @@
 /* 1060px */
 
 @media (min-width: 1110px) {
+
   .gallery-layout .img-container,
   .gallery-layout .memes-container {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
