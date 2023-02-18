@@ -181,7 +181,6 @@ function onAddEmoji(emoji) {
 
 function onSaveToMemes() {
     renderMeme(true)
-    const elLink = document.querySelector('.link-download')
     setTimeout(() => {
         saveToMemes()
         changeMainTo('memes')

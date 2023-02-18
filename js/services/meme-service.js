@@ -101,6 +101,7 @@ function getImgById(id) {
 }
 
 function setLineTxt(txt) {
+    if (!getCurrLine()) addLine()
     getCurrLine().txt = txt
 }
 
