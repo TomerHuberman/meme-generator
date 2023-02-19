@@ -18,7 +18,7 @@
   text-shadow: -6px -3px 4px #ac5c07;
 }
 
-.main-header .main-nav li{
+.main-header .main-nav li {
   margin-inline-end: 40px;
 }
 
@@ -29,9 +29,13 @@
   justify-content: center;
   padding: 8px;
   font-weight: 700;
-  
+
   text-transform: uppercase;
   display: flex;
   color: inherit;
   text-decoration: overline;
+}
+
+.main-header .main-nav a:hover {
+  color: var(--clr4);
 }

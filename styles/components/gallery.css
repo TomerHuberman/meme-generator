@@ -10,7 +10,7 @@
 }
 
 .main-gallery .img-container>*:hover {
-    border: 5px solid var(--clr1);
+    border: 1px solid var(--clr1);
     cursor: pointer;
-    box-shadow: 11px 10px 17px 3px var(--clr3);
+    box-shadow: 6px 2px 6px 0px var(--clr3)
 }

@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles/main.css" />
     <title>Meme Generator</title>
 </head>
 
 <body onload="onInit()">
     <header class="main-header flex space-between align-center">
-       <h1 class="logo">ToMeme</h1>
+        <h1 class="logo">ToMeme</h1>
         <nav class="main-nav">
             <ul class="main-menu clean-list flex">
                 <li><a class="active" href="#" onclick="changeMainTo('gallery')">Gallery</a></li>
@@ -48,16 +50,20 @@
         <div class="editor">
             <input class="txt-input" placeholder="type text here" type="text" oninput="onSetLineTxt(this.value)">
             <label for="change-color" class="btn btn-round color fa-solid fa-palette"></label>
-            <input class="color input-color opacity0" type="color" id="change-color" oninput="onChangeColor(this.value)">
-            <button class="btn-increase btn-round fa-solid fa-up-down-left-right" onclick="onScaleFont(5)"></button>
-            <button class="btn-decrease btn-round fa-solid fa-minimize" onclick="onScaleFont(-5)"></button>
+            <input class="color input-color opacity0" type="color" id="change-color"
+                oninput="onChangeColor(this.value)">
+            <button class="btn-increase btn-round" data-title="Scale up" onclick="onScaleFont(5)">A+</button>
+            <button class="btn-decrease btn-round" data-title="Scale down" onclick="onScaleFont(-5)">A-</button>
             <button class="btn-switch btn-round" onclick="onSaveToMemes()">Save to Memes</button>
-            <button class="btn-up btn-round fa-solid fa-angles-up" onclick="onMoveLine(-10)"></button>
-            <button class="btn-down btn-round fa-solid fa-angles-down" onclick="onMoveLine(10)"></button>
-            <button class="btn-add btn-round fa-solid fa-plus" onclick="onAddLine()"></button>
-            <button class="btn-remove btn-round fa-solid fa-trash-can" onclick="onRemoveLine()"></button>
-            <button href="#" class="btn btn-download btn-round fa-solid fa-file-image fa-download" onclick="renderImgToDownload()"
-                download="my-img.jpg"></button>
+            <button class="btn-up btn-round fa-solid fa-angles-up" data-title="Move line up"
+                onclick="onMoveLine(-10)"></button>
+            <button class="btn-down btn-round fa-solid fa-angles-down" data-title="Move line down"
+                onclick="onMoveLine(10)"></button>
+            <button class="btn-add btn-round fa-solid fa-plus" data-title="Add line" onclick="onAddLine()"></button>
+            <button class="btn-remove btn-round" data-title="remove line" onclick="onRemoveLine()"><i
+                    class="fa-solid fa-trash-can"></i></button>
+            <button href="#" class="btn btn-download btn-round fa-solid fa-file-image fa-download"
+                onclick="renderImgToDownload()" download="my-img.jpg"></button>
             <a href="#" class="link-download none" onclick="downloadImg(this)" download="my-img.jpg"></a>
             <select name="emojis" class="emojis" oninput="onAddEmoji(this.value)">
                 <option>🤣</option>
@@ -80,16 +86,17 @@
 
     </section>
 
-    <footer class="footer"><h2>Made by Tomer Huberman</h2></footer>
-    
+    <footer class="footer">
+        <h2>Made by Tomer Huberman</h2>
+    </footer>
+
     <script src="https://kit.fontawesome.com/590cb69fe5.js" crossorigin="anonymous"></script>
-    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/storage-service.js"></script>
     <script src="js/services/util-service.js"></script>
-    <script src="js/gallery-cntroller.js"></script>
+    <script src="js/services/meme-service.js"></script>
+    <script src="js/gallery-controller.js"></script>
     <script src="js/meme-controller.js"></script>
     <script src="js/save-memes-controller.js"></script>
-    <script src="js/services/gallery-service.js"></script>
-    <script src="js/services/meme-service.js"></script>
 </body>
 
 </html>

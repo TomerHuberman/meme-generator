@@ -27,14 +27,14 @@ let gImgs = [
 
 _getMemes()
 
-let gMeme = {
+var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     lines: []
 }
 
-function getCanvasHeight(cw, ih, iw) {
-    return cw * ih / iw
+function setCanvasHeight(canvasWidth, imgHeight, imgWidth) {
+    return canvasWidth * imgHeight / imgWidth
 }
 
 function setMeme(meme) {
@@ -51,7 +51,7 @@ function switchLine(idx) {
 
 function scaleFont(num) {
     getCurrLine().size += num
-    selectedLine()
+    markSelectedLine()
 }
 
 function changeColor(color) {
@@ -106,11 +106,15 @@ function setLineTxt(txt) {
 }
 
 function clearEmpty() {
-    gMeme.lines = gMeme.lines.filter(line => line.txt !== '')  
+    gMeme.lines = gMeme.lines.filter(line => line.txt !== '')
 }
 
 function getCurrLine() {
     return gMeme.lines[gMeme.selectedLineIdx]
+}
+
+function getCurrLineTxt() {
+    return getCurrLine().txt
 }
 
 function moveLineBtn(num) {
@@ -140,11 +144,16 @@ function resetLines() {
     gMeme.lines = []
     addLine()
     addLine()
+    gMeme.selectedLineIdx = 0
+}
+
+function getDeffTxt() {
+    return 'Text will be here'
 }
 
 function addLine() {
     const newLine = {
-        txt: 'Text will be here',
+        txt: getDeffTxt(),
         size: 30,
         align: 'left',
         fontFamily: 'impact',
@@ -167,22 +176,6 @@ function addLine() {
     gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
-function drawText(lines) {
-    lines.forEach(line => {
-        gCtx.beginPath()
-        gCtx.lineWidth = 1
-        gCtx.fontFamily = line.fontFamily
-        gCtx.strokeStyle = 'black'
-        gCtx.fillStyle = line.color
-        gCtx.font = `${line.size}px impact`
-        gCtx.textAlign = 'center'
-        gCtx.textBaseline = 'middle'
-
-        gCtx.fillText(line.txt, line.x, line.y) // Draws (fills) a given text at the given (x, y) position.
-        gCtx.strokeText(line.txt, line.x, line.y) // Draws (strokes) a given text at the given (x, y) position.
-    });
-}
-
 function measureText() {
     const { txt, size } = getCurrLine()
     const height = size + 10
@@ -190,7 +183,7 @@ function measureText() {
     return { height, width }
 }
 
-function selectedLine(x, y) {
+function markSelectedLine(x, y) {
     gCtx.beginPath()
     gCtx.lineWidth = 3
     const { height, width } = measureText()

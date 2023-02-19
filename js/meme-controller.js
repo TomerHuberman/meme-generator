@@ -15,14 +15,14 @@ function onInit() {
     addListeners()
 }
 
-function renderMeme(d) {
+function renderMeme(forSave) {
     let currMeme = getMeme()
     let currImg = getImgById(currMeme.selectedImgId)
     const img = new Image() // Create a new html img element
     img.src = currImg.url // Send a network req to get that image, define the img src
 
 
-    const currHeight = getCanvasHeight(gElCanvas.width, img.height, img.width) + 'px'
+    const currHeight = setCanvasHeight(gElCanvas.width, img.height, img.width) + 'px'
     if (gLastHeight !== currHeight) {
         const elContainer = document.querySelector('.canvas-container')
         gLastHeight =
@@ -30,24 +30,39 @@ function renderMeme(d) {
         resizeCanvas()
     }
 
-
     // When the image ready draw it on the canvas
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-        drawText(currMeme.lines)
+        // drawText(currMeme.lines)
+        renderLines(currMeme.lines)
         setTxtInputValue()
-        if (d) return
+        if (forSave) return
         const { x, y } = getCurrLine()
-        selectedLine(x, y)
+        markSelectedLine(x, y)
     }
+}
+
+function renderLines(lines) {
+    lines.forEach(line => drawLine(line))
+}
+
+function drawLine(line){
+    gCtx.beginPath()
+    gCtx.lineWidth = 1
+    gCtx.strokeStyle = 'black'
+    gCtx.fillStyle = line.color
+    gCtx.font = `${line.size}px impact`
+    gCtx.textAlign = 'center'
+    gCtx.textBaseline = 'middle'
+
+    gCtx.fillText(line.txt, line.x, line.y)
+    gCtx.strokeText(line.txt, line.x, line.y) 
 }
 
 function onImgInput(ev) {
     loadImageFromInput(ev, addNewImg)
 }
 
-
-//Handle the listeners
 function addListeners() {
     addMouseListeners()
     addTouchListeners()
@@ -109,7 +124,6 @@ function onUp() {
     document.body.style.cursor = 'default'
 }
 
-
 function getEvPos(ev) {
     // Gets the offset pos , the default pos
     let pos = {
@@ -151,7 +165,8 @@ function onSwitchLine(idx) {
 function setTxtInputValue() {
     const elTxtInput = document.querySelector('.txt-input')
     elTxtInput.focus()
-    elTxtInput.value = (getCurrLine().txt === 'Text will be here') ? '' : getCurrLine().txt
+    const lineTxt = getCurrLineTxt()
+    elTxtInput.value = (lineTxt === getDeffTxt()) ? '' : lineTxt
 }
 
 function onSetLineTxt(txt) {

@@ -9,10 +9,10 @@
   src: url(/styles/fonts/fontAwesome/fa-solid-900.woff2);
 } */
 
-@font-face {
-  font-family: impact;
+/* @font-face {
+  font-family: Impact;
   src: url(/styles/fonts/impact/impact.ttf);
-}
+} */
 /* 
 .fa-solid::before {
   font-family: fa-solid;
