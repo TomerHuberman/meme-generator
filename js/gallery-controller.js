@@ -21,13 +21,24 @@ function onSetImg(id) {
     renderMeme()
 }
 
+function onChangeHeaderActive(section) {
+    const navs = document.querySelectorAll('.main-menu a')
+    navs.forEach(main => {
+        main.classList.remove('active')
+    })
+    if (section === 'editor') return
+    const elNav = document.querySelector(`.nav-${section}`)
+    elNav.classList.add('active')
+}
+
 function changeMainTo(section) {
+    onChangeHeaderActive(section)
     const elMains = document.querySelectorAll('.main')
     elMains.forEach(main => {
         main.classList.add('none')
-
     })
     const elMain = document.querySelector(`.main-${section}`)
     elMain.classList.remove('none')
+    elMain.classList.add('active')
     if (section === 'memes') renderMemes()
 }

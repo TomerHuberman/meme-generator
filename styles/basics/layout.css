@@ -23,6 +23,7 @@
 }
 
 .editor {
+  align-self: center;
   width: 100%;
   height: fit-content;
   background-color: #be4c01;
@@ -93,4 +94,7 @@
 
 .editor .file-input {
   grid-area: file;
+  width: 100%;
+  background-color: var(--clr-2);
+  font-size: 1em;
 }

@@ -17,8 +17,8 @@
         <h1 class="logo">ToMeme</h1>
         <nav class="main-nav">
             <ul class="main-menu clean-list flex">
-                <li><a class="active" href="#" onclick="changeMainTo('gallery')">Gallery</a></li>
-                <li><a href="#" onclick="changeMainTo('memes')">My Memes</a></li>
+                <li><a class="active nav-gallery" href="#" onclick="changeMainTo('gallery')">Gallery</a></li>
+                <li><a class="nav-memes" href="#" onclick="changeMainTo('memes')">My Memes</a></li>
             </ul>
         </nav>
     </header>
@@ -33,7 +33,7 @@
                 <option value="funny"></option>
                 <option value="actors"></option>
                 <option value="animal"></option>
-                <option value="politicoes"></option>
+                <option value="politicians"></option>
             </datalist>
         </nav>
         <div class="img-container"></div>
@@ -62,7 +62,7 @@
             <button class="btn-add btn-round fa-solid fa-plus" data-title="Add line" onclick="onAddLine()"></button>
             <button class="btn-remove btn-round" data-title="remove line" onclick="onRemoveLine()"><i
                     class="fa-solid fa-trash-can"></i></button>
-            <button href="#" class="btn btn-download btn-round fa-solid fa-file-image fa-download"
+            <button href="#" class="btn btn-download btn-round fa-solid fa-file-image fa-download" data-title="Download Meme"
                 onclick="renderImgToDownload()" download="my-img.jpg"></button>
             <a href="#" class="link-download none" onclick="downloadImg(this)" download="my-img.jpg"></a>
             <select name="emojis" class="emojis" oninput="onAddEmoji(this.value)">
@@ -76,7 +76,7 @@
                 <option>☀️</option>
             </select>
             <!-- <label for="new-image" class="btn btn-round new-image fa-solid fa-file-image"></label> -->
-            <input type="file" class="file-input" name="new-image" onchange="onImgInput(event)" />
+            <input type="file" class="btn btn-round file-input" name="new-image" onchange="onImgInput(event)" />
 
         </div>
     </section>
